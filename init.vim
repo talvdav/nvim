@@ -44,6 +44,7 @@ Plug 'gluon-lang/vim-gluon'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'vim-airline/vim-airline'
+Plug 'LnL7/vim-nix'
 call plug#end()
 
 colorscheme onedark
