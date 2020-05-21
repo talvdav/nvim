@@ -1,19 +1,56 @@
+cd $HOME
+
 set number
 set relativenumber 
 set autoindent
 set ruler
 set incsearch
 set autochdir
+set cursorline
+set ruler
 
 " Mapping
 
 inoremap jk <Esc> 
+inoremap kj <Esc> 
 
-
-let mapleader=","
+let mapleader=" "
 
 nnoremap <Leader>q" ciw""<Esc>P
 nnoremap <Leader>q' ciw''<Esc>P
+nnoremap <Leader>q( ciw()<Esc>P
+
+" Move between buffers with hjkl
+ 
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+nnoremap <A-j> :resize +2<CR>
+nnoremap <A-k> :resize -2<CR>
+nnoremap <A-h> :vertical resize +2<Cr>
+nnoremap <A-l> :vertical resize -2<Cr>
+
+nnoremap <Leader>j <C-x>
+nnoremap <Leader>k <C-a>
+nnoremap <Leader>h 10<C-x>
+nnoremap <Leader>l 10<C-a>
+
+nnoremap <Up>    :resize +2<CR>
+nnoremap <Down>  :resize -2<CR>
+nnoremap <Left>  :vertical resize +2<Cr>
+nnoremap <Right> :vertical resize -2<Cr>
+
+xnoremap K :move '<-2<CR>gv-gv
+xnoremap J :move '>+1<CR>gv-gv
+
+inoremap <C-s> <Esc>:w<CR>
+
+map <C-n> :NERDTreeToggle<CR>
+map <C-r> :source $MYVIMRC<CR>
+
+map <F12> :so $VIMRUNTIME/syntax/hitest.vim<CR>
 
 syntax on
 
@@ -24,8 +61,25 @@ autocmd Filetype clojure setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab
 autocmd Filetype elm     setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 autocmd FileType rust    setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 autocmd FileType haskell setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd FileType elixir  setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
-set guifont=Fira\ Code:h9
+set guifont=Fira\ Code
+
+" Status-line
+
+set statusline=
+set statusline+=%#IncSearch#
+set statusline+=\ %M
+set statusline+=\ %y
+set statusline+=\ %r
+set statusline+=\ %F
+set statusline+=%=
+set statusline+=%#MatchParen#
+set statusline+=\ %p%%
+set statusline+=\ [%c:%l/%L]
+set statusline+=\ [%n]
+set statusline+=%#SignColumn#
+set statusline+=\ %{strftime(\"%H:%M\")}
 
 " Plugins
 
@@ -37,15 +91,16 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin' 
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'joshdick/onedark.vim'
-Plug 'itchyny/lightline.vim'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'cespare/vim-toml'
 Plug 'gluon-lang/vim-gluon'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'vim-airline/vim-airline'
 Plug 'LnL7/vim-nix'
+Plug 'elixir-editors/vim-elixir'
+"Plug 'vim-airline/vim-airline'
+"Plug 'itchyny/lightline.vim'
 call plug#end()
 
 colorscheme onedark
-let g:lightline = { 'colorscheme': 'onedark' }
+"let g:lightline = { 'colorscheme': 'onedark' }
