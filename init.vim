@@ -1,5 +1,3 @@
-cd $HOME
-
 set number
 set relativenumber 
 set autoindent
@@ -19,6 +17,23 @@ let mapleader=" "
 nnoremap <Leader>q" ciw""<Esc>P
 nnoremap <Leader>q' ciw''<Esc>P
 nnoremap <Leader>q( ciw()<Esc>P
+nnoremap <Leader>qp ciw()<Esc>P
+nnoremap <Leader>qb ciw[]<Esc>P
+nnoremap <Leader>qs ciw{}<Esc>P
+
+nnoremap <Leader>Q" ciW""<Esc>P
+nnoremap <Leader>Q' ciW''<Esc>P
+nnoremap <Leader>Q( ciW()<Esc>P
+nnoremap <Leader>Qp ciW()<Esc>P
+nnoremap <Leader>Qb ciW[]<Esc>P
+nnoremap <Leader>Qs ciW{}<Esc>P
+
+xnoremap <Leader>q" c""<Esc>P
+xnoremap <Leader>q' c''<Esc>P
+xnoremap <Leader>q( c()<Esc>P
+xnoremap <Leader>qp c()<Esc>P
+xnoremap <Leader>qb c[]<Esc>P
+xnoremap <Leader>qs c{}<Esc>P
 
 " Move between buffers with hjkl
  
@@ -46,11 +61,12 @@ xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
 
 inoremap <C-s> <Esc>:w<CR>
+nnoremap <C-s> <Esc>:w<CR>
 
 map <C-n> :NERDTreeToggle<CR>
 map <C-r> :source $MYVIMRC<CR>
 
-map <F12> :so $VIMRUNTIME/syntax/hitest.vim<CR>
+map <C-x><F12> :so $VIMRUNTIME/syntax/hitest.vim<CR>
 
 syntax on
 
@@ -78,7 +94,7 @@ set statusline+=%#MatchParen#
 set statusline+=\ %p%%
 set statusline+=\ [%c:%l/%L]
 set statusline+=\ [%n]
-set statusline+=%#SignColumn#
+set statusline+=%#String#
 set statusline+=\ %{strftime(\"%H:%M\")}
 
 " Plugins
@@ -104,3 +120,5 @@ call plug#end()
 
 colorscheme onedark
 "let g:lightline = { 'colorscheme': 'onedark' }
+
+cd $HOME
