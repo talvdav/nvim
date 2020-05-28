@@ -7,6 +7,37 @@ set autochdir
 set cursorline
 set ruler
 
+syntax on
+
+filetype plugin indent on
+
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+
+autocmd FileType text    setlocal textwidth=78 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd Filetype clojure setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd Filetype elm     setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd FileType rust    setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd FileType haskell setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd FileType elixir  setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+
+set guifont=Fira\ Code
+
+" Status-line
+
+set statusline=
+set statusline+=%#IncSearch#
+set statusline+=\ %M
+set statusline+=\ %y
+set statusline+=\ %r
+set statusline+=\ %F
+set statusline+=%=
+set statusline+=%#MatchParen#
+set statusline+=\ %p%%
+set statusline+=\ [%c:%l/%L]
+set statusline+=\ [%n]
+set statusline+=%#String#
+set statusline+=\ %{strftime(\"%H:%M\")}
+
 " Mapping
 
 inoremap jk <Esc> 
@@ -68,35 +99,6 @@ map <C-r> :source $MYVIMRC<CR>
 
 map <C-x><F12> :so $VIMRUNTIME/syntax/hitest.vim<CR>
 
-syntax on
-
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
-
-autocmd FileType text    setlocal textwidth=78 softtabstop=0 expandtab shiftwidth=4 smarttab
-autocmd Filetype clojure setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-autocmd Filetype elm     setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-autocmd FileType rust    setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-autocmd FileType haskell setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-autocmd FileType elixir  setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-
-set guifont=Fira\ Code
-
-" Status-line
-
-set statusline=
-set statusline+=%#IncSearch#
-set statusline+=\ %M
-set statusline+=\ %y
-set statusline+=\ %r
-set statusline+=\ %F
-set statusline+=%=
-set statusline+=%#MatchParen#
-set statusline+=\ %p%%
-set statusline+=\ [%c:%l/%L]
-set statusline+=\ [%n]
-set statusline+=%#String#
-set statusline+=\ %{strftime(\"%H:%M\")}
-
 " Plugins
 
 call plug#begin('~/.config/nvim/plugins')
@@ -117,6 +119,8 @@ Plug 'elixir-editors/vim-elixir'
 "Plug 'vim-airline/vim-airline'
 "Plug 'itchyny/lightline.vim'
 call plug#end()
+
+execute pathogen#indect()
 
 colorscheme onedark
 "let g:lightline = { 'colorscheme': 'onedark' }
