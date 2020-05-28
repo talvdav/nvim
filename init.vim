@@ -83,6 +83,8 @@ nnoremap <Leader>k <C-a>
 nnoremap <Leader>h 10<C-x>
 nnoremap <Leader>l 10<C-a>
 
+nnoremap <Leader>+ ~
+
 nnoremap <Up>    :resize +2<CR>
 nnoremap <Down>  :resize -2<CR>
 nnoremap <Left>  :vertical resize +2<Cr>
@@ -108,7 +110,6 @@ Plug 'elmcast/elm-vim'
 Plug 'scrooloose/nerdtree' 
 Plug 'Xuyuanp/nerdtree-git-plugin' 
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'joshdick/onedark.vim'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'cespare/vim-toml'
 Plug 'gluon-lang/vim-gluon'
@@ -116,6 +117,8 @@ Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'LnL7/vim-nix'
 Plug 'elixir-editors/vim-elixir'
+" Color Schemes
+Plug 'joshdick/onedark.vim'
 "Plug 'vim-airline/vim-airline'
 "Plug 'itchyny/lightline.vim'
 call plug#end()
