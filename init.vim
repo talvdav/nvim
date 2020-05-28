@@ -120,7 +120,7 @@ Plug 'elixir-editors/vim-elixir'
 "Plug 'itchyny/lightline.vim'
 call plug#end()
 
-execute pathogen#indect()
+execute pathogen#infect()
 
 colorscheme onedark
 "let g:lightline = { 'colorscheme': 'onedark' }
