@@ -5,7 +5,6 @@ set ruler
 set incsearch
 set autochdir
 set cursorline
-set ruler
 
 syntax on
 
@@ -19,8 +18,9 @@ autocmd Filetype elm     setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab
 autocmd FileType rust    setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 autocmd FileType haskell setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 autocmd FileType elixir  setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd FileType fsharp  setlocal shiftwidth=4 tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
-set guifont=Fira\ Code
+set guifont="Fira Code"
 
 " Status-line
 
@@ -93,20 +93,21 @@ nnoremap <Right> :vertical resize -2<Cr>
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
 
-inoremap <C-s> <Esc>:w<CR>
-nnoremap <C-s> <Esc>:w<CR>
-
 map <C-n> :NERDTreeToggle<CR>
 map <C-r> :source $MYVIMRC<CR>
-
+map <C-x><C-s> :w<CR>
 map <C-x><F12> :so $VIMRUNTIME/syntax/hitest.vim<CR>
 
+map <Leader>cc :set cursorcolumn!<CR>
+map <Leader>dr :!dotnet run<CR>
+map <Leader>bn :bn<Cr>
+map <Leader>bl :bl<Cr>
 " Plugins
 
 call plug#begin('~/.config/nvim/plugins')
 Plug 'https://github.com/PProvost/vim-ps1.git'          " not working :'( 
 Plug 'https://github.com/neovimhaskell/haskell-vim.git' " not working :'(  
-Plug 'elmcast/elm-vim'
+"Plug 'elmcast/elm-vim'
 Plug 'scrooloose/nerdtree' 
 Plug 'Xuyuanp/nerdtree-git-plugin' 
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
@@ -116,11 +117,14 @@ Plug 'gluon-lang/vim-gluon'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'LnL7/vim-nix'
-Plug 'elixir-editors/vim-elixir'
+"Plug 'elixir-editors/vim-elixir'
 " Color Schemes
 Plug 'joshdick/onedark.vim'
 "Plug 'vim-airline/vim-airline'
 "Plug 'itchyny/lightline.vim'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'tag': '0.1.155', 'do': 'bash install.sh' }
+Plug 'ionide/Ionide-vim', { 'do': 'make fsautocomplete' }
+Plug 'junegunn/fzf'
 call plug#end()
 
 execute pathogen#infect()
