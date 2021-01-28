@@ -93,6 +93,11 @@ nnoremap <Right> :vertical resize -2<Cr>
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
 
+xnoremap <Leader>y "+y
+xnoremap <Leader>Y "*y
+xnoremap <Leader>p "+p
+xnoremap <Leader>P "*y
+
 map <C-n> :NERDTreeToggle<CR>
 map <C-r> :source $MYVIMRC<CR>
 map <C-x><C-s> :w<CR>
@@ -102,6 +107,7 @@ map <Leader>cc :set cursorcolumn!<CR>
 map <Leader>dr :!dotnet run<CR>
 map <Leader>bn :bn<Cr>
 map <Leader>bl :bl<Cr>
+
 " Plugins
 
 call plug#begin('~/.config/nvim/plugins')
