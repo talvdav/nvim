@@ -93,6 +93,37 @@ vim.keymap.set("i", "jk", "<Esc>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- NOTE: Neovide configuration
+if vim.g.neovide then
+	vim.o.guifont = "Fira Code:10"
+	vim.g.neovide_scale_factor = 0.8
+
+	vim.g.neovide_padding_top = 0
+	vim.g.neovide_padding_bottom = 0
+	vim.g.neovide_padding_right = 0
+	vim.g.neovide_padding_left = 0
+
+	-- Helper function for transparency formatting
+	local alpha = function()
+		return string.format("%x", math.floor((255 * vim.g.transparency) or 0.8))
+	end
+
+	vim.g.neovide_window_blurred = true
+	-- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
+	vim.g.neovide_transparency = 0.98
+	vim.g.transparency = 0.8
+	vim.g.neovide_background_color = "#0f1117" .. alpha()
+
+	vim.g.neovide_floating_shadow = true
+	vim.g.neovide_floating_z_height = 10
+	vim.g.neovide_light_angle_degrees = 45
+	vim.g.neovide_light_radius = 5
+
+	vim.g.neovide_cursor_vfx_mode = "torpedo"
+
+	vim.cmd("cd ~")
+end
+
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
@@ -173,10 +204,10 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- TIP: Disable arrow keys in normal mode
-vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set("n", "<left>", "")
+vim.keymap.set("n", "<right>", "")
+vim.keymap.set("n", "<up>", "")
+vim.keymap.set("n", "<down>", "")
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -731,26 +762,26 @@ require("lazy").setup({
 		"folke/tokyonight.nvim",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
 		priority = 1000, -- make sure to load this before all the other start plugins
-		--config = function()
-		--	-- Load the colorscheme here
-		--	vim.cmd.colorscheme("tokyonight-night")
+		config = function()
+			-- Load the colorscheme here
+			vim.cmd.colorscheme("tokyonight")
 
-		--	-- You can configure highlights by doing something like
-		--	vim.cmd.hi("Comment gui=none")
-		--end,
+			-- You can configure highlights by doing something like
+			vim.cmd.hi("Comment gui=none")
+		end,
 	},
 
 	{
 		"sainnhe/gruvbox-material",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
 		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			-- Load the colorscheme here
-			vim.cmd.colorscheme("gruvbox-material")
+		-- config = function()
+		-- 	-- Load the colorscheme here
+		-- 	vim.cmd.colorscheme("gruvbox-material")
 
-			-- You can configure highlights by doing something like
-			vim.cmd.hi("Comment gui=none")
-		end,
+		-- 	-- You can configure highlights by doing something like
+		-- 	vim.cmd.hi("Comment gui=none")
+		-- end,
 	},
 
 	-- Highlight todo, notes, etc in comments
@@ -806,7 +837,7 @@ require("lazy").setup({
 
 			---@diagnostic disable-next-line: missing-fields
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "bash", "c", "html", "lua", "markdown", "vim", "vimdoc" },
+				ensure_installed = { "bash", "c", "html", "lua", "markdown", "vim", "vimdoc", "go", "elixir", "nix" },
 				-- Autoinstall languages that are not installed
 				auto_install = true,
 				highlight = { enable = true },
