@@ -762,26 +762,19 @@ require("lazy").setup({
 		"folke/tokyonight.nvim",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
 		priority = 1000, -- make sure to load this before all the other start plugins
+		dependencies = {
+			"maxmx03/solarized.nvim",
+			"catppuccin/nvim",
+			"sainnhe/gruvbox-material",
+			"sainnhe/everforest",
+		},
 		config = function()
 			-- Load the colorscheme here
-			vim.cmd.colorscheme("tokyonight")
+			vim.cmd.colorscheme("everforest")
 
 			-- You can configure highlights by doing something like
 			vim.cmd.hi("Comment gui=none")
 		end,
-	},
-
-	{
-		"sainnhe/gruvbox-material",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other start plugins
-		-- config = function()
-		-- 	-- Load the colorscheme here
-		-- 	vim.cmd.colorscheme("gruvbox-material")
-
-		-- 	-- You can configure highlights by doing something like
-		-- 	vim.cmd.hi("Comment gui=none")
-		-- end,
 	},
 
 	-- Highlight todo, notes, etc in comments
