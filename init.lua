@@ -33,6 +33,7 @@ if vim.g.neovide then
   vim.g.neovide_light_radius = 5
 
   vim.g.neovide_cursor_vfx_mode = 'torpedo'
+  vim.cmd 'cd ~'
 end
 
 vim.keymap.set('i', 'jk', '<Esc>')
@@ -179,6 +180,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
+  'tpope/vim-fugitive',
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
@@ -518,18 +520,27 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
-        -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        --
-        -- Some languages (like typescript) have entire language plugins that can be useful:
-        --    https://github.com/pmizio/typescript-tools.nvim
-        --
-        -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
-        --
+        zls = {
+          cmd = (function()
+          if vim.fn.has 'win32' == 1 then
+            return { os.getenv 'USERPROFILE' .. '/.zvm/bin/zls' }
+          else
+            return { os.getenv 'HOME' .. '/.zvm/bin/zls' }
+          end
+        end)(),
+          -- clangd = {},
+          -- gopls = {},
+          -- pyright = {},
+          -- rust_analyzer = {},
+          -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
+          --
+          -- Some languages (like typescript) have entire language plugins that can be useful:
+          --    https://github.com/pmizio/typescript-tools.nvim
+          --
+          -- But for many setups, the LSP (`tsserver`) will work just fine
+          -- tsserver = {},
+          --
+        },
 
         lua_ls = {
           -- cmd = {...},
@@ -862,6 +873,5 @@ require('lazy').setup({
   },
 })
 
-vim.cmd 'cd ~'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
