@@ -522,12 +522,12 @@ require('lazy').setup({
       local servers = {
         zls = {
           cmd = (function()
-          if vim.fn.has 'win32' == 1 then
-            return { os.getenv 'USERPROFILE' .. '/.zvm/bin/zls' }
-          else
-            return { os.getenv 'HOME' .. '/.zvm/bin/zls' }
-          end
-        end)(),
+            if vim.fn.has 'win32' == 1 then
+              return { os.getenv 'USERPROFILE' .. '/.zvm/bin/zls' }
+            else
+              return { os.getenv 'HOME' .. '/.zvm/bin/zls' }
+            end
+          end)(),
           -- clangd = {},
           -- gopls = {},
           -- pyright = {},
@@ -694,6 +694,7 @@ require('lazy').setup({
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
           ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ['<TAB>'] = cmp.mapping.confirm { select = true },
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
